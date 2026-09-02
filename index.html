@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menu | Chaatwala</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Segoe UI", Arial, sans-serif; background: #f1f5f9; color: #0f172a; }
+header { background: #fff; text-align: center; padding: 22px 16px 14px; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+header img { max-width: 150px; height: auto; }
+header .tagline { font-size: 13px; letter-spacing: 3px; color: #64748b; margin-top: 6px; text-transform: uppercase; }
+nav { position: sticky; top: 0; z-index: 100; display: flex; gap: 6px; padding: 8px 12px; background: rgba(255,255,255,.85); backdrop-filter: blur(10px); border-bottom: 1px solid #e2e8f0; overflow-x: auto; white-space: nowrap; }
+nav::-webkit-scrollbar { display: none; }
+.nav-item { flex-shrink: 0; padding: 8px 16px; border-radius: 999px; border: 1px solid #e2e8f0; background: #fff; color: #64748b; font-size: 13px; font-weight: 600; cursor: pointer; transition: all .2s; }
+.nav-item:hover { color: #0f172a; }
+.nav-item.active { background: #0ea5e9; border-color: #0ea5e9; color: #fff; }
+main { max-width: 1200px; margin: 0 auto; padding: 16px; }
+.menu-section { margin: 34px 0; scroll-margin-top: 70px; }
+.section-head h2 { font-size: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; margin-bottom: 14px; }
+.dish-grid { list-style: none; display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 768px) { .dish-grid { grid-template-columns: 1fr 1fr; gap: 18px; } }
+@media (min-width: 1200px) { .dish-grid { grid-template-columns: 1fr 1fr 1fr; gap: 22px; } }
+.dish-card { display: flex; flex-direction: column; background: rgba(255,255,255,.72); backdrop-filter: blur(20px); border-radius: 20px; border: 1px solid rgba(255,255,255,.9); box-shadow: 0 8px 22px rgba(15,23,42,.05), inset 0 1px 0 #fff; overflow: hidden; transition: transform .2s, box-shadow .2s; }
+.dish-card:hover { transform: translateY(-3px); box-shadow: 0 16px 32px rgba(15,23,42,.09); }
+.dish-image-wrap { position: relative; width: 100%; height: 170px; background: #e8edf3; overflow: hidden; }
+.dish-image-wrap img { width: 100%; height: 100%; object-fit: cover; }
+.dish-image-wrap.noimg .noimg-label { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 15px; text-align: center; padding: 10px; color: #94a3b8; }
+.dish-body { padding: 14px 16px 16px; display: flex; flex-direction: column; flex: 1; }
+.dish-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.dish-name { font-size: 16px; font-weight: 700; line-height: 1.25; }
+.badge { font-size: 9px; font-weight: 800; letter-spacing: 1px; padding: 3px 6px; border-radius: 999px; flex-shrink: 0; }
+.badge.veg { color: #15803d; background: #dcfce7; border: 1px solid #86efac; }
+.badge.spicy { color: #b91c1c; background: #fee2e2; border: 1px solid #fca5a5; }
+.dish-desc { font-size: 13px; color: #64748b; line-height: 1.45; margin-bottom: 10px; }
+.desc-lv { font-style: italic; color: #94a3b8; margin-top: 3px; }
+.dish-price { margin-top: auto; font-size: 18px; font-weight: 800; color: #0ea5e9; }
+.dish-price span { background: rgba(14,165,233,.08); padding: 3px 10px; border-radius: 999px; }
+footer { text-align: center; color: #94a3b8; font-size: 13px; padding: 26px 10px 34px; }
+</style>
+</head>
+<body>
+<header>
+    <img src="logo1.png" alt="Chaatwala">
+    <div class="tagline">Indian Fast-Food &middot; Riga, Latvia</div>
+</header>
+<nav><button class="nav-item" data-target="cat-0">Soup</button><button class="nav-item" data-target="cat-1">Starters</button><button class="nav-item" data-target="cat-2">Street Style</button><button class="nav-item" data-target="cat-3">Main Course</button><button class="nav-item" data-target="cat-4">Dal</button><button class="nav-item" data-target="cat-5">Rice &amp; Noodles</button><button class="nav-item" data-target="cat-6">Salad &amp; Papadoms</button><button class="nav-item" data-target="cat-7">Breads</button><button class="nav-item" data-target="cat-8">Extras</button><button class="nav-item" data-target="cat-9">Desserts</button><button class="nav-item" data-target="cat-10">Drinks and Beverages</button></nav>
+<main>
+        <section class="menu-section" id="cat-0">
+            <div class="section-head"><h2>Soup</h2></div>
+            <ul class="dish-grid">
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/manchowsoup.png" alt="Manchow Soup" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Manchow Soup</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Manchow Soup</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Vegetable stock, vegetables, soy sauce, garlic, ginger, chili.</div><div class="desc-lv">Dārzeņu buljons, dārzeņi, sojas mērce, ķiploki, ingvers, čili.</div></div>
+                <div class="dish-price"><span>&euro; 4.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/chickensoup.png" alt="Chicken Soup" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Chicken Soup</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Chicken Soup</h3></div>
+                <div class="dish-desc"><div class="desc-en">Chicken, chicken stock, vegetables, spices.</div><div class="desc-lv">Vistas gaļa, vistas buljons, dārzeņi, garšvielas.</div></div>
+                <div class="dish-price"><span>&euro; 4.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/lemoncoriandersoup.png" alt="Lemon Coriander Soup" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Lemon Coriander Soup</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Lemon Coriander Soup</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Vegetables, lemon, coriander, ginger, garlic, spring onion.</div><div class="desc-lv">Dārzeņi, citrons, koriandrs, ingvers, ķiploki, lociņi.</div></div>
+                <div class="dish-price"><span>&euro; 4.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/sweetcornsoup.png" alt="Sweet Corn Soup" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Sweet Corn Soup</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Sweet Corn Soup</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Sweet corn, vegetable stock, cream, pepper, salt</div><div class="desc-lv">Saldā kukurūza, dārzeņu buljons, krējums, pipari, sāls</div></div>
+                <div class="dish-price"><span>&euro; 4.00</span></div>
+            </div>
+        </li></ul>
+        </section>
+        <section class="menu-section" id="cat-1">
+            <div class="section-head"><h2>Starters</h2></div>
+            <ul class="dish-grid">
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/samosa.png" alt="Samosa" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Samosa</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Samosa</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Potato, peas, spices, wheat flour pastry.</div><div class="desc-lv">Kartupeļi, zirņi, garšvielas, kviešu milkas mīkla.</div></div>
+                <div class="dish-price"><span>&euro; 4.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/springroll.png" alt="Spring Roll" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Spring Roll</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Spring Roll</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Mixed vegetables, noodles, wrappers, soy sauce, spices.</div><div class="desc-lv">Jaukti dārzeņi, nūdeles, plācenīši, sojas mērce, garšvielas.</div></div>
+                <div class="dish-price"><span>&euro; 4.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/honeychilipotatoes.png" alt="Honey Chili Potatoes" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Honey Chili Potatoes</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Honey Chili Potatoes</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Potato, cornflour, honey, chili sauce, garlic, sesame.</div><div class="desc-lv">Kartupeļi, kukurūzas ciete, medus, čili mērce, ķiploki, sezama sēklas.</div></div>
+                <div class="dish-price"><span>&euro; 4.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/dabeli.png" alt="Dabeli" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Dabeli</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Dabeli</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Bun, spiced mashed potato, sev, chutneys.</div><div class="desc-lv">Maizīte, kartupeļu masa ar garšvielām, sev nūdeles, čatniji.</div></div>
+                <div class="dish-price"><span>&euro; 3.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/paneerroll.png" alt="Paneer Roll" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Paneer Roll</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Paneer Roll</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Veg wrap with curried potatoes, roasted cauliflower and chickpeas, onions, wrapped in a warm tortilla.</div><div class="desc-lv">Vegetāra versija ir pildīta ar karija kartupeļu biezeni, ceptiem Indijas ziedkāpostiem un aunazirņiem, sīpoliem, kas viss ietīts siltā tortiljā.</div></div>
+                <div class="dish-price"><span>&euro; 4.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/frankie.png" alt="Frankie" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Frankie</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Frankie</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Veg wrap with curried potatoes, roasted cauliflower and chickpeas, onions, wrapped in a warm tortilla.</div><div class="desc-lv">Veg versija ir pildīta ar karija kartupeļu biezeni, ceptiem Indijas ziedkāpostiem un aunazirņiem, sīpoliem, kas viss ietīts siltā tortiljā.</div></div>
+                <div class="dish-price"><span>&euro; 4.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/mixpakode.png" alt="Mix Pakode" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Mix Pakode</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Mix Pakode</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Crispy assortment of mixed vegetable fritters deep-fried in seasoned gram flour batter.</div><div class="desc-lv">Kraukšķīgs dažādu dārzeņu uzkodu asorti, kas eļļā cepts garšotā turku zirņu miltu mīklā.</div></div>
+                <div class="dish-price"><span>&euro; 4.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/breadpakode.png" alt="Bread Pakode" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Bread Pakode</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Bread Pakode</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Crispy, golden-fried bread fritters stuffed with a savory spiced potato filling, coated in seasoned gram flour batter.</div><div class="desc-lv">Kraukšķīgas, zeltainī ceptas maizes uzkodas ar sāļu, garšvielām bagātinātu kartupeļu pildījumu, kas panētas turku zirņu miltu mīklā.</div></div>
+                <div class="dish-price"><span>&euro; 3.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/vadapav.png" alt="Vada Pav" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Vada Pav</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Vada Pav</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Classic Indian street food: a spicy, deep-fried potato patty served in a soft bun with chutneys.</div><div class="desc-lv">Klasiskais Indijas ielu ēdiens: pikanta, eļļā cepta kartupeļu kotlete, pasniegta mīkstā maizītē ar čatnijiem.</div></div>
+                <div class="dish-price"><span>&euro; 3.00</span></div>
+            </div>
+        </li></ul>
+        </section>
+        <section class="menu-section" id="cat-2">
+            <div class="section-head"><h2>Street Style</h2></div>
+            <ul class="dish-grid">
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/panipuri.png" alt="Pani Puri" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Pani Puri</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Pani Puri</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Golgappa puri, potato, chickpeas, tamarind water, spicy mint water.</div><div class="desc-lv">Golgapa plācenīši, kartupeļi, turku zirņi, tamarinda ūdens, ass piparmētru ūdens.</div></div>
+                <div class="dish-price"><span>&euro; 3.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/dahipuri.png" alt="Dahi Puri" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Dahi Puri</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Dahi Puri</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Crispy puri with potatoes, chickpeas, yogurt, chutneys and sev.</div><div class="desc-lv">Kraukšķīgi puri ar kartupeļiem, turku zirņiem, jogurtu, čatnijiem un sev nūdelēm.</div></div>
+                <div class="dish-price"><span>&euro; 3.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/sevpuri.png" alt="Sev Puri" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Sev Puri</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Sev Puri</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Papdi puri, potato, onion, tomato, sev, chutneys.</div><div class="desc-lv">Papdi plācenīši, kartupeļi, sīpoli, tomāti, sev nūdeles, čatniji.</div></div>
+                <div class="dish-price"><span>&euro; 3.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/papdichat.png" alt="Papdi Chat" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Papdi Chat</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Papdi Chat</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Crisp papdi topped with potatoes, chutneys and sev.</div><div class="desc-lv">Kraukšķīgi papdi plācenīši, pārklāti ar kartupeļiem, čatnijiem un sev nūdelēm.</div></div>
+                <div class="dish-price"><span>&euro; 3.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/bombaybhel.png" alt="Bombay Bhel" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Bombay Bhel</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Bombay Bhel</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Puffed rice, sev, papdi, onion, tomato, chutneys, coriander.</div><div class="desc-lv">Pūstie rīsi, sev nūdeles, papdi plācenīši, sīpoli, tomāti, čatniji, koriandrs.</div></div>
+                <div class="dish-price"><span>&euro; 4.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/vegsandwich.jpg" alt="Veg Sandwich" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Veg Sandwich</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Veg Sandwich</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Bread, cucumber, tomato, onion, potato, butter, chutney.</div><div class="desc-lv">Maize, gurķi, tomāti, sīpoli, kartupeļi, sviests, čatnijs.</div></div>
+                <div class="dish-price"><span>&euro; 2.80</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/potatocheesesandwich.jpg" alt="Potato Cheese Sandwich" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Potato Cheese Sandwich</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Potato Cheese Sandwich</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Bread, potato stuffing, cheese slice, butter, chutney.</div><div class="desc-lv">Maize, kartupeļu pildījums, siera šķēle, sviests, čatnijs.</div></div>
+                <div class="dish-price"><span>&euro; 3.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/cheesegrillsandwich.jpg" alt="Cheese Grill Sandwich" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Cheese Grill Sandwich</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Cheese Grill Sandwich</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Bread, potato, onion, cucumber, capsicum, cabbage, cheese.</div><div class="desc-lv">Maize, kartupeļi, sīpoli, gurķi, paprika, kāposti, siers.</div></div>
+                <div class="dish-price"><span>&euro; 4.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/pavbhaji.jpg" alt="Pav Bhaji" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Pav Bhaji</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Pav Bhaji</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">A popular Mumbai street food: a flavorful, thick mixed vegetable mash served with buttered and soft pav.</div><div class="desc-lv">Populārs Mumbajas ielu ēdiens: garšīga, bieza jaukta dārzeņu biezzupa, pasniegta ar sviestā apceptu mīkstu pav maizīti.</div></div>
+                <div class="dish-price"><span>&euro; 6.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/samosachaat.jpg" alt="Samosa Chaat" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Samosa Chaat</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Samosa Chaat</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Crushed samosas topped with warm savory chickpea curry, chutneys and fresh garnishes.</div><div class="desc-lv">Sasmalcinātas samosas, pārklātas ar siltu, pikantu aunazirņu kariju, čatniju un svaigām piedevām.</div></div>
+                <div class="dish-price"><span>&euro; 4.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/bombaysandwich.jpg" alt="Bombay Sandwich" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Bombay Sandwich</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Bombay Sandwich</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Bread, sliced potato, cucumber, tomato, onion, beetroot, butter, green chutney.</div><div class="desc-lv">Maize, sagriezti kartupeļi, gurķi, tomāti, sīpoli, bietes, sviests, zaļais čatnijs.</div></div>
+                <div class="dish-price"><span>&euro; 4.20</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/cholebhature.webp" alt="Chole Bhature" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Chole Bhature</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Chole Bhature</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Spicy and tangy chickpea curry served with soft, deep-fried leavened bread.</div><div class="desc-lv">Pikants un skābens aunazirņu karijs, pasniegts ar mīkstu, eļļā ceptu raudzētu maizi.</div></div>
+                <div class="dish-price"><span>&euro; 6.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/alootikkichaat.jpg" alt="Aloo Tikki Chaat" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Aloo Tikki Chaat</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Aloo Tikki Chaat</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Crispy spiced potato patties served with black chickpeas, chilled yogurt, vibrant chutneys and aromatic spices.</div><div class="desc-lv">Kraukšķīgi, garšvielām bagātināti kartupeļu plācenīši, ko pasniedz ar melnajiem turku zirņiem, atvēsinātu jogurtu, aromātiskiem čatnijiem un garšaugu maisījumu.</div></div>
+                <div class="dish-price"><span>&euro; 4.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/paneertikkasandwich.webp" alt="Paneer Tikka Sandwich" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Paneer Tikka Sandwich</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Paneer Tikka Sandwich</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Bread, marinated paneer tikka, capsicum, onion, chutney.</div><div class="desc-lv">Maize, marinēts paneer tikka, paprika, sīpoli, čatnijs.</div></div>
+                <div class="dish-price"><span>&euro; 4.80</span></div>
+            </div>
+        </li></ul>
+        </section>
+        <section class="menu-section" id="cat-3">
+            <div class="section-head"><h2>Main Course</h2></div>
+            <ul class="dish-grid">
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/chickentikkamasala.jpg" alt="Chicken Tikka Masala" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Chicken Tikka Masala</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Chicken Tikka Masala</h3><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Chicken tikka, tomato gravy, cream, butter, spices.</div><div class="desc-lv">Vistas tikka gabali, tomātu mērce, krējums, sviests, garšvielas.</div></div>
+                <div class="dish-price"><span>&euro; 10.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/butterchicken.jpg" alt="Butter Chicken" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Butter Chicken</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Butter Chicken</h3></div>
+                <div class="dish-desc"><div class="desc-en">Marinated chicken, tomato sauce, butter, cream, kasuri methi.</div><div class="desc-lv">Marinēta vistas gaļa, tomātu mērce, sviests, krējums, kaltētas fenugreka lapas.</div></div>
+                <div class="dish-price"><span>&euro; 9.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/kadaichicken.jpg" alt="Kadai Chicken" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Kadai Chicken</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Kadai Chicken</h3><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Pungent and tangy chicken curry cooked with bell peppers, onions and freshly ground spices.</div><div class="desc-lv">Pievilcīga un pikanta vistas karija mērce, kas gatavota ar papriku, sīpoliem un svaigi maltām garšvielām.</div></div>
+                <div class="dish-price"><span>&euro; 10.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/chickendopyaza.avif" alt="Chicken Do Pyaza" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Chicken Do Pyaza</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Chicken Do Pyaza</h3></div>
+                <div class="dish-desc"><div class="desc-en">Flavorful chicken curry prepared with onions, spices and a rich semi-dry gravy.</div><div class="desc-lv">Aromātisks vistas karijs, kas pagatavots ar dāsnām daudzumu sīpolu, garšvielām un bagātīgu, pustiru mērci.</div></div>
+                <div class="dish-price"><span>&euro; 10.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/chickensaagwala.jpg" alt="Chicken Saagwala" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Chicken Saagwala</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Chicken Saagwala</h3></div>
+                <div class="dish-desc"><div class="desc-en">Tender chicken pieces cooked in a rich mustard greens and spinach sauce with traditional spices.</div><div class="desc-lv">Maigi vistas gabaliņi, kas gatavoti bagātīgā, lauku stila sarson ka saag biezenī ar tradicionālām garšvielām.</div></div>
+                <div class="dish-price"><span>&euro; 9.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/chickenlababdar.avif" alt="Chicken Lababdar" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Chicken Lababdar</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Chicken Lababdar</h3></div>
+                <div class="dish-desc"><div class="desc-en">Tender chicken pieces simmered in a rich creamy tomato and onion gravy with ginger, coriander and aromatic spices.</div><div class="desc-lv">Maigi vistas gaļas gabaliņi bagātīgā, krēmīgā tomātu un sīpolu mērcē ar ingveru, koriandru un aromātisku garšvielu buķeti.</div></div>
+                <div class="dish-price"><span>&euro; 11.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/paneerbuttermasala.jpg" alt="Paneer Butter Masala" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Paneer Butter Masala</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Paneer Butter Masala</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Soft paneer cubes simmered in a rich velvety tomato and butter gravy with kasuri methi.</div><div class="desc-lv">Mīksti paneer siera gabaliņi bagātīgā, samtainā tomātu un sviesta mērcē, kas papildināta ar aromātiskām garšvielām un grieķu trigoneļu.</div></div>
+                <div class="dish-price"><span>&euro; 9.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/kadaipaneer.webp" alt="Kadai Paneer" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Kadai Paneer</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Kadai Paneer</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Paneer, onion, tomato, capsicum, kadai masala, cream.</div><div class="desc-lv">Paneers, sīpoli, tomāti, paprika, kadai garšvielu maisījums, krējums.</div></div>
+                <div class="dish-price"><span>&euro; 9.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/shahipaneer.webp" alt="Shahi Paneer" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Shahi Paneer</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Shahi Paneer</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Paneer cubes cooked in a mild, subtly sweet cashew and tomato gravy.</div><div class="desc-lv">Karalisks, krēmīgs ēdiens no paneer siera kubiņiem, kas gatavots maigā, nedaudz saldā Indijas riekstu un tomātu mērcē.</div></div>
+                <div class="dish-price"><span>&euro; 9.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/paneerdopyaza.jpg" alt="Paneer Do Pyaza" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Paneer Do Pyaza</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Paneer Do Pyaza</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Succulent paneer cubes cooked in a savory onion-based gravy with double onions.</div><div class="desc-lv">Sulīgi panīra siera gabaliņi sātīgā sīpolu mērcē, kuras sastāvā ir dubulta porcija sīpolu.</div></div>
+                <div class="dish-price"><span>&euro; 9.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/paneerlababdar.jpg" alt="Paneer Lababdar" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Paneer Lababdar</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Paneer Lababdar</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Paneer cubes served in a creamy rich tomato gravy with chunky bell peppers and onions.</div><div class="desc-lv">Paneer siera kubiņi, pasniegti krēmīgā, bagātīgā tomātu mērcē ar gabaliņos sagrieztu papriku un sīpoliem.</div></div>
+                <div class="dish-price"><span>&euro; 10.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/mutterpaneer.jpg" alt="Mutter Paneer" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Mutter Paneer</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Mutter Paneer</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Soft paneer cubes and tender green peas cooked in a savory spiced tomato and onion gravy.</div><div class="desc-lv">Mīksti panīra siera gabaliņi un maigi zaļie zirnīši, kas pagatavoti sātīgā, garšvielām bagātinātā tomātu un sīpolu mērcē.</div></div>
+                <div class="dish-price"><span>&euro; 9.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/kajumasala.webp" alt="Kaju Masala" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Kaju Masala</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Kaju Masala</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Roasted cashew nuts simmered in a rich creamy spiced tomato-onion gravy.</div><div class="desc-lv">Grauzdēti Indijas rieksti bagātīgā, krēmīgā un garšvielām bagātinātā tomātu un sīpolu mērcē.</div></div>
+                <div class="dish-price"><span>&euro; 9.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/paneersaagwala.jpg" alt="Paneer Saagwala" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Paneer Saagwala</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Paneer Saagwala</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Soft paneer cubes cooked in a rich mustard greens and spinach sauce with fragrant spices.</div><div class="desc-lv">Mīksti paneer siera kubiņi, kas gatavoti bagātīgā, lauku stila sarson ka saag biezenī ar smaržīgām garšvielām.</div></div>
+                <div class="dish-price"><span>&euro; 9.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/paneertikkamasala.webp" alt="Paneer Tikka Masala" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Paneer Tikka Masala</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Paneer Tikka Masala</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Grilled paneer tikka, tomato gravy, cream, butter, spices.</div><div class="desc-lv">Grilēts paneer tikka, tomātu mērce, krējums, sviests, garšvielas.</div></div>
+                <div class="dish-price"><span>&euro; 9.50</span></div>
+            </div>
+        </li></ul>
+        </section>
+        <section class="menu-section" id="cat-4">
+            <div class="section-head"><h2>Dal</h2></div>
+            <ul class="dish-grid">
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/dalmakhani.jpg" alt="Dal Makhani" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Dal Makhani</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Dal Makhani</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Black lentils and kidney beans slow-cooked in a creamy butter-rich smoky sauce.</div><div class="desc-lv">Melnās lēcas un sarkanās pupiņas, lēni vārītas krēmīgā, sviesta bagātā un dūmakainā mērcē.</div></div>
+                <div class="dish-price"><span>&euro; 6.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/lehsunidal.jpg" alt="Lehsuni Dal" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Lehsuni Dal</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Lehsuni Dal</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Yellow lentils with a generous infusion of sautéed garlic, cumin and dried red chilies.</div><div class="desc-lv">Dzeltenās lēcas ar bagātīgu apceptu ķiploku, ķimeņu un kaltētu sarkano čili piedevu.</div></div>
+                <div class="dish-price"><span>&euro; 7.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/dalfry.webp" alt="Dal Fry" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Dal Fry</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Dal Fry</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Yellow lentils, onion, tomato, garlic, ghee, spices.</div><div class="desc-lv">Dzeltenās lēcas, sīpoli, tomāti, ķiploki, ghi sviests, garšvielas.</div></div>
+                <div class="dish-price"><span>&euro; 6.00</span></div>
+            </div>
+        </li></ul>
+        </section>
+        <section class="menu-section" id="cat-5">
+            <div class="section-head"><h2>Rice &amp; Noodles</h2></div>
+            <ul class="dish-grid">
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/steamrice.jpg" alt="Steam Rice" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Steam Rice</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Steam Rice</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Basmati rice, water, salt.</div><div class="desc-lv">Basmati rīsi, ūdens, sāls.</div></div>
+                <div class="dish-price"><span>&euro; 2.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/jeerarice.jpg" alt="Jeera Rice" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Jeera Rice</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Jeera Rice</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Basmati rice, cumin seeds, ghee, salt.</div><div class="desc-lv">Basmati rīsi, ķimenes, ghi sviests, sāls.</div></div>
+                <div class="dish-price"><span>&euro; 3.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/yellowrice.jpg" alt="Yellow Rice" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Yellow Rice</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Yellow Rice</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Fragrant basmati rice infused with turmeric and aromatic spices.</div><div class="desc-lv">Aromātiski rīsi ar kurkumas un garšvielu piedevu koši zeltainā tonī.</div></div>
+                <div class="dish-price"><span>&euro; 3.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/greenpeasrice.jpg" alt="Green Peas Rice" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Green Peas Rice</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Green Peas Rice</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Fluffy steamed basmati rice gently tossed with tender green peas.</div><div class="desc-lv">Gaisīgi tvaicēti basmati rīsi ar maigiem zaļajiem zirnīšiem.</div></div>
+                <div class="dish-price"><span>&euro; 3.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/veghakkanoodles.jpg" alt="Veg Hakka Noodles" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Veg Hakka Noodles</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Veg Hakka Noodles</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Stir-fried noodles with fresh vegetables, soy sauce and mild spices.</div><div class="desc-lv">Pannā ceptas nūdeles ar svaigiem dārzeņiem, sojas mērci un maigām garšvielām.</div></div>
+                <div class="dish-price"><span>&euro; 5.20</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/chickenhakkanoodles.avif" alt="Chicken Hakka Noodles" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Chicken Hakka Noodles</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Chicken Hakka Noodles</h3></div>
+                <div class="dish-desc"><div class="desc-en">Stir-fried noodles with tender chicken strips, crisp vegetables and savory Indo-Chinese sauces.</div><div class="desc-lv">Pannā ceptas nūdeles ar maigām vistas gaļas loksnītēm, kraukšķīgiem dārzeņiem un sātīgām Indijas-Ķīnas mērcēm.</div></div>
+                <div class="dish-price"><span>&euro; 5.80</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/vegfriedrice.jpg" alt="Veg Fried Rice" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Veg Fried Rice</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Veg Fried Rice</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Basmati rice stir-fried in a wok with fresh vegetables and mild Indo-Chinese flavors.</div><div class="desc-lv">Basmati rīsi, apcepti vokpannā ar svaigiem dārzeņiem un garšoti ar maigām Indijas-Ķīnas garšvielām.</div></div>
+                <div class="dish-price"><span>&euro; 5.20</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/schezwanfriedrice.webp" alt="Schezwan Fried Rice" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Schezwan Fried Rice</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Schezwan Fried Rice</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Spicy stir-fried basmati rice tossed with mixed vegetables and fiery Schezwan sauce.</div><div class="desc-lv">Pikanti pannā cepti basmati rīsi ar jauktiem dārzeņiem un ugunīgu Šečuānas mērci.</div></div>
+                <div class="dish-price"><span>&euro; 5.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/chickenfriedrice.jpg" alt="Chicken Fried Rice" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Chicken Fried Rice</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Chicken Fried Rice</h3></div>
+                <div class="dish-desc"><div class="desc-en">Stir-fried basmati rice with tender chicken pieces, crisp vegetables and a savory soy sauce blend.</div><div class="desc-lv">Pannā cepti rīsi ar maigiem vistas gaļas gabaliņiem, kraukšķīgiem dārzeņiem un sātīgu sojas mērces un garšvielu maisījumu.</div></div>
+                <div class="dish-price"><span>&euro; 5.80</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/schezwanchickenrice.webp" alt="Schezwan Chicken Rice" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Schezwan Chicken Rice</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Schezwan Chicken Rice</h3><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Spicy stir-fried basmati rice with tender chicken, vegetables and hot Schezwan sauce.</div><div class="desc-lv">Pikanti pannā cepti basmati rīsi ar maigu vistas gaļu, dārzeņiem un aso Šečuānas mērci.</div></div>
+                <div class="dish-price"><span>&euro; 6.00</span></div>
+            </div>
+        </li></ul>
+        </section>
+        <section class="menu-section" id="cat-6">
+            <div class="section-head"><h2>Salad &amp; Papadoms</h2></div>
+            <ul class="dish-grid">
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/gardensalad.webp" alt="Garden Salad" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Garden Salad</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Garden Salad</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Freshly sliced onion, tomato, carrot and beetroot.</div><div class="desc-lv">Svaigi sagriezti sīpoli, tomāti, burkāni un bietes.</div></div>
+                <div class="dish-price"><span>&euro; 3.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/sirkapyaz.jpg" alt="Sirka Pyaz" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Sirka Pyaz</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Sirka Pyaz</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Vinegar soaked red onions.</div><div class="desc-lv">Etiķī marinēti sarkanie sīpoli.</div></div>
+                <div class="dish-price"><span>&euro; 2.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/plainpapad.avif" alt="Plain Papad" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Plain Papad</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Plain Papad</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Thin crisp lentil wafer, deep-fried or roasted.</div><div class="desc-lv">Plāna, kraukšķīga lēcu vafeles plāksne, cepta eļļā vai grauzdēta.</div></div>
+                <div class="dish-price"><span>&euro; 1.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/masalapapad.jpg" alt="Masala Papad" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Masala Papad</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Masala Papad</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Crispy lentil wafer garnished with onion, tomato, coriander and spicy masala mix.</div><div class="desc-lv">Kraukšķīga lēcu vafeles plāksne, rotāta ar aromātiskiem sīpolu, tomātu, koriandru un pikantu masalas maisījumu.</div></div>
+                <div class="dish-price"><span>&euro; 2.50</span></div>
+            </div>
+        </li></ul>
+        </section>
+        <section class="menu-section" id="cat-7">
+            <div class="section-head"><h2>Breads</h2></div>
+            <ul class="dish-grid">
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/tawaroti.png" alt="Tawa Roti" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Tawa Roti</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Tawa Roti</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Traditional whole wheat Indian flatbread cooked on a hot griddle.</div><div class="desc-lv">Tradicionāla Indijas pilngraudu kviešu plakanmaize, cepta uz karstas pannas.</div></div>
+                <div class="dish-price"><span>&euro; 1.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/plainnaan.jpg" alt="Plain Naan" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Plain Naan</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Plain Naan</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Wheat flour, yeast, yogurt, milk, butter, salt.</div><div class="desc-lv">Kviešu milti, raugs, jogurts, piens, sviests, sāls.</div></div>
+                <div class="dish-price"><span>&euro; 2.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/butternaan.webp" alt="Butter Naan" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Butter Naan</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Butter Naan</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Naan, butter, coriander.</div><div class="desc-lv">Nāna maize, sviests, koriandrs.</div></div>
+                <div class="dish-price"><span>&euro; 2.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/garlicnaan.jpg" alt="Garlic Naan" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Garlic Naan</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Garlic Naan</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Naan, garlic, butter, coriander.</div><div class="desc-lv">Nāna maize, ķiploki, sviests, koriandrs.</div></div>
+                <div class="dish-price"><span>&euro; 2.80</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/kulchastuffnaan.jpg" alt="Kulcha/Stuff Naan" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Kulcha/Stuff Naan</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Kulcha/Stuff Naan</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Refined flour, yogurt, yeast, butter, filling of potato or paneer.</div><div class="desc-lv">Kviešu milti, jogurts, raugs, sviests, pildījums kartupeļi vai paneers.</div></div>
+                <div class="dish-price"><span>&euro; 3.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/alooparatha2pcwithcurd.webp" alt="Aloo Paratha 2pc with Curd" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Aloo Paratha 2pc with Curd</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Aloo Paratha 2pc with Curd</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">2 pcs spiced potato flatbread served with pickle and curd.</div><div class="desc-lv">2 gab. Aloo Paratha ar pikantiem kartupeļiem ar marinējumiem un biezpienu.</div></div>
+                <div class="dish-price"><span>&euro; 5.50</span></div>
+            </div>
+        </li></ul>
+        </section>
+        <section class="menu-section" id="cat-8">
+            <div class="section-head"><h2>Extras</h2></div>
+            <ul class="dish-grid">
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/coriandermintsauce.jpg" alt="Coriander + Mint Sauce" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Coriander + Mint Sauce</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Coriander + Mint Sauce</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Fresh coriander, mint, green chilies, spices, yogurt.</div><div class="desc-lv">Svaigs koriandrs, piparmētra, zaļie čili, garšvielas, jogurts.</div></div>
+                <div class="dish-price"><span>&euro; 1.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/tamarindsauce.jpg" alt="Tamarind Sauce" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Tamarind Sauce</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Tamarind Sauce</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Sweet and tangy sauce made from tamarind, jaggery and spices.</div><div class="desc-lv">Saldskāba mērce no tamarinda, palmu cukura un garšvielām.</div></div>
+                <div class="dish-price"><span>&euro; 1.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/boondiraita.webp" alt="Boondi-Raita" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Boondi-Raita</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Boondi-Raita</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Chilled yogurt mixed with crispy chickpea flour droplets and spices.</div><div class="desc-lv">Atvēsināts jogurts ar kraukšķīgām turku zirņu miltu bumbiņām un garšvielām.</div></div>
+                <div class="dish-price"><span>&euro; 2.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/sweetchillisauce.jpg" alt="Sweet Chilli Sauce" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Sweet Chilli Sauce</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Sweet Chilli Sauce</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Sweet and mildly spicy sauce with red chilies and garlic.</div><div class="desc-lv">Saldu un maigi pikanta mērce ar sarkanajiem čili pipariem un ķiplokiem.</div></div>
+                <div class="dish-price"><span>&euro; 1.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/schezwansauce.jpg" alt="Schezwan Sauce" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Schezwan Sauce</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Schezwan Sauce</h3><span class="badge veg">VEG</span><span class="badge spicy">SPICY</span></div>
+                <div class="dish-desc"><div class="desc-en">Fiery Indo-Chinese sauce made with dry red chilies, garlic and spices.</div><div class="desc-lv">Ugunīga Indijas-Ķīnas mērce, kas gatavota no kaltētiem sarkanajiem čili pipariem, ķiplokiem un garšvielām.</div></div>
+                <div class="dish-price"><span>&euro; 1.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/bun.jpg" alt="Bun" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Bun</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Bun</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Soft buttery toasted bun perfect for sides.</div><div class="desc-lv">Mīksta, sviestaina, grauzdēta maizīte, lieliski piemērota piedevām.</div></div>
+                <div class="dish-price"><span>&euro; 1.50</span></div>
+            </div>
+        </li></ul>
+        </section>
+        <section class="menu-section" id="cat-9">
+            <div class="section-head"><h2>Desserts</h2></div>
+            <ul class="dish-grid">
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/browniewithicecream.jpg" alt="Brownie with Ice Cream" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Brownie with Ice Cream</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Brownie with Ice Cream</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Brownie, ice cream, chocolate sauce.</div><div class="desc-lv">Braunijs, saldējums, šokolādes mērce.</div></div>
+                <div class="dish-price"><span>&euro; 4.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/gulabjamun.jpg" alt="Gulab Jamun" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Gulab Jamun</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Gulab Jamun</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Two pieces of warm classic Indian sweet milk dumplings.</div><div class="desc-lv">Divi gabali silti, klasisku Indijas saldo piena bumbiņu.</div></div>
+                <div class="dish-price"><span>&euro; 3.00</span></div>
+            </div>
+        </li></ul>
+        </section>
+        <section class="menu-section" id="cat-10">
+            <div class="section-head"><h2>Drinks and Beverages</h2></div>
+            <ul class="dish-grid">
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/chaimasala.jpg" alt="Chai(Masala)" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Chai(Masala)</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Chai(Masala)</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Black tea, milk, sugar, ginger, cardamom.</div><div class="desc-lv">Melnā tēja, piens, cukurs, ingvers, kardamons.</div></div>
+                <div class="dish-price"><span>&euro; 2.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/indianstylecoffee.webp" alt="Indian Style Coffee" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Indian Style Coffee</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Indian Style Coffee</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Coffee, milk, sugar.</div><div class="desc-lv">Kafija, piens, cukurs.</div></div>
+                <div class="dish-price"><span>&euro; 2.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/softdrinks330ml.webp" alt="Soft Drinks 330ml" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Soft Drinks 330ml</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Soft Drinks 330ml</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Coca Cola, Coca Cola Zero, Sprite, Fanta.</div><div class="desc-lv">Coca Cola, Coca Cola Zero, Sprite, Fanta.</div></div>
+                <div class="dish-price"><span>&euro; 1.40</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/juice.webp" alt="Juice" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Juice</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Juice</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Orange, mixfruit, pineapple, apple.</div><div class="desc-lv">Apelsīnu, multifrūtu, ananāsu, ābolu sula.</div></div>
+                <div class="dish-price"><span>&euro; 2.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/mangolassi.webp" alt="Mango Lassi" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Mango Lassi</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Mango Lassi</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Mango pulp, yogurt, sugar, cardamom.</div><div class="desc-lv">Mango biezenis, jogurts, cukurs, kardamons.</div></div>
+                <div class="dish-price"><span>&euro; 4.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/saltedlassi.jpg" alt="Salted Lassi" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Salted Lassi</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Salted Lassi</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Refreshing chilled yogurt drink whisked with roasted cumin, salt and cooling spices.</div><div class="desc-lv">Atsvaidzinošs, atvēsināts jogurta dzēriens, kas sakults ar grauzdētām ķimenēm, sāli un atvēsinošām garšvielām.</div></div>
+                <div class="dish-price"><span>&euro; 3.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/roselassi.jpg" alt="Rose Lassi" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Rose Lassi</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Rose Lassi</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Yogurt, rose syrup, sugar.</div><div class="desc-lv">Jogurts, rožu sīrups, cukurs.</div></div>
+                <div class="dish-price"><span>&euro; 4.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/longisland.webp" alt="Long Island" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Long Island</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Long Island</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Vodka, white rum, gin, lemon juice, cola.</div><div class="desc-lv">Degvīns, baltais rums, džins, citrona sula, kola.</div></div>
+                <div class="dish-price"><span>&euro; 7.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/piacolada.jpg" alt="Piña Colada" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Piña Colada</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Piña Colada</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">White rum, syrup, pineapple juice, coconut milk.</div><div class="desc-lv">Baltais rums, sīrups, ananasu sula, kokosriekstu piens.</div></div>
+                <div class="dish-price"><span>&euro; 6.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/mojito.avif" alt="Mojito" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Mojito</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Mojito</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">White rum, lemon juice, syrup, fresh mint, tonic water.</div><div class="desc-lv">Baltais rums, citrona sula, sīrups, svaigs citrons un piparmētra, toniks.</div></div>
+                <div class="dish-price"><span>&euro; 5.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/aperolspritz.jpeg" alt="Aperol Spritz" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Aperol Spritz</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Aperol Spritz</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Aperol, prosecco, orange.</div><div class="desc-lv">Aperol, Prosekko, apelsīns.</div></div>
+                <div class="dish-price"><span>&euro; 7.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/limemojitononalcoholic.webp" alt="Lime Mojito (Non-Alcoholic)" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Lime Mojito (Non-Alcoholic)</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Lime Mojito (Non-Alcoholic)</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Lemon and mint, lime juice, syrup, tonic water.</div><div class="desc-lv">Citrons un piparmētra, laima sula, sīrups, toniks.</div></div>
+                <div class="dish-price"><span>&euro; 4.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/nimbusharbatnonalcoholic.webp" alt="Nimbu Sharbat (Non-Alcoholic)" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Nimbu Sharbat (Non-Alcoholic)</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Nimbu Sharbat (Non-Alcoholic)</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Traditional Indian sweet and tangy lemon refresher.</div><div class="desc-lv">Tradicionāls Indijas saldskābs citronu dzēriens.</div></div>
+                <div class="dish-price"><span>&euro; 3.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/redwine.webp" alt="Red Wine" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Red Wine</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Red Wine</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Red wine by the glass.</div><div class="desc-lv">Sarkanvīns glāzē.</div></div>
+                <div class="dish-price"><span>&euro; 4.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/whitewine.webp" alt="White Wine" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>White Wine</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">White Wine</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">White wine by the glass.</div><div class="desc-lv">Baltvīns glāzē.</div></div>
+                <div class="dish-price"><span>&euro; 4.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/oreoshake.webp" alt="Oreo Shake" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Oreo Shake</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Oreo Shake</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Oreo, ice cream, milk, sugar.</div><div class="desc-lv">Oreo, saldējums, piens, cukurs.</div></div>
+                <div class="dish-price"><span>&euro; 4.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/kitkatshake.jpg" alt="KitKat Shake" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>KitKat Shake</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">KitKat Shake</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Kit-kat, ice-cream, milk, sugar.</div><div class="desc-lv">Kit-kat, saldējums, piens, cukurs.</div></div>
+                <div class="dish-price"><span>&euro; 4.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/dryfruitshake.webp" alt="Dryfruit Shake" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Dryfruit Shake</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Dryfruit Shake</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Dryfruits, ice-cream, milk, sugar.</div><div class="desc-lv">Žāvēti augļi, saldējums, piens, cukurs.</div></div>
+                <div class="dish-price"><span>&euro; 4.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/blackcurrantshake.jpg" alt="Black Currant Shake" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Black Currant Shake</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Black Currant Shake</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Black-currant, ice-cream, milk, sugar.</div><div class="desc-lv">Upenes, saldējums, piens, cukurs.</div></div>
+                <div class="dish-price"><span>&euro; 4.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/coronaextra.webp" alt="Corona Extra" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Corona Extra</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Corona Extra</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">330ml beer.</div><div class="desc-lv">330 ml alus.</div></div>
+                <div class="dish-price"><span>&euro; 2.80</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/madonas.avif" alt="Madonas" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Madonas</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Madonas</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">500ml no filter beer.</div><div class="desc-lv">500 ml nefiltrēts alus.</div></div>
+                <div class="dish-price"><span>&euro; 4.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/jameson.avif" alt="Jameson" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Jameson</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Jameson</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">30ml smooth and balanced Irish whiskey.</div><div class="desc-lv">Maigs un sabalansēts klasisks īru viskijs, 30 ml.</div></div>
+                <div class="dish-price"><span>&euro; 4.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/jackdaniels.avif" alt="Jack Daniels" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Jack Daniels</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Jack Daniels</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">30ml iconic Tennessee whiskey.</div><div class="desc-lv">30 ml ikoniskais Tenesī viskijs.</div></div>
+                <div class="dish-price"><span>&euro; 5.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/indri.jpg" alt="Indri" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Indri</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Indri</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">30ml award-winning Indian single malt whiskey.</div><div class="desc-lv">Godalgots Indijas viena iesala viskijs, 30 ml.</div></div>
+                <div class="dish-price"><span>&euro; 6.50</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/valmiermuia.webp" alt="Valmiermuiža" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Valmiermuiža</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Valmiermuiža</h3></div>
+                <div class="dish-desc"><div class="desc-en">500ml ar rokām darīts</div><div class="desc-lv">500ml Handcrafted</div></div>
+                <div class="dish-price"><span>&euro; 4.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/bluelagune.jpg" alt="BLUE LAGUNE" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>BLUE LAGUNE</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">BLUE LAGUNE</h3></div>
+                <div class="dish-desc"><div class="desc-en">Vodka, Pineapple Juice, Syrup, Sprite</div><div class="desc-lv">Degvīns, ananasu sula, sīrups, Sprite</div></div>
+                <div class="dish-price"><span>&euro; 6.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/ayran.jpg" alt="Ayran" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Ayran</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Ayran</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">Yogurt-based drink with salt (Salted Lassi)</div></div>
+                <div class="dish-price"><span>&euro; 3.00</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/pepsi.png" alt="Pepsi" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Pepsi</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Pepsi</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">0.3l</div><div class="desc-lv">0.3l</div></div>
+                <div class="dish-price"><span>&euro; 1.80</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/pepsi.jpg" alt="Pepsi" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Pepsi</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Pepsi</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">0.5l</div></div>
+                <div class="dish-price"><span>&euro; 2.20</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/mirinda.jpg" alt="Mirinda" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Mirinda</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Mirinda</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">0.3l</div><div class="desc-lv">0.3l</div></div>
+                <div class="dish-price"><span>&euro; 1.80</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/mirinda-107.jpg" alt="Mirinda" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Mirinda</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Mirinda</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">0.5l</div><div class="desc-lv">0.5l</div></div>
+                <div class="dish-price"><span>&euro; 2.20</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/7up.jpg" alt="7 Up" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>7 Up</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">7 Up</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">0.3l</div><div class="desc-lv">0.3l</div></div>
+                <div class="dish-price"><span>&euro; 1.80</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/7up-109.jpg" alt="7 Up" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>7 Up</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">7 Up</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">0.5l</div><div class="desc-lv">0.5l</div></div>
+                <div class="dish-price"><span>&euro; 2.20</span></div>
+            </div>
+        </li>
+        <li class="dish-card">
+            <div class="dish-image-wrap"><img src="images/stillwater.png" alt="Still Water" loading="lazy" onerror="this.parentElement.classList.add('noimg');this.outerHTML=&#39;<div class=noimg-label>Still Water</div>&#39;"></div>
+            <div class="dish-body">
+                <div class="dish-head"><h3 class="dish-name">Still Water</h3><span class="badge veg">VEG</span></div>
+                <div class="dish-desc"><div class="desc-en">0.5l</div><div class="desc-lv">0.5l</div></div>
+                <div class="dish-price"><span>&euro; 1.50</span></div>
+            </div>
+        </li></ul>
+        </section></main>
+<footer>OFFICIAL MENU &middot; Chaatwala &middot; 11 categories &middot; 107 dishes &middot; Generated 02 Sep 2026</footer>
+<script>
+var navItems=document.querySelectorAll(".nav-item");
+navItems.forEach(function(btn){btn.addEventListener("click",function(){
+  var t=document.getElementById(btn.dataset.target);
+  if(t){t.scrollIntoView({behavior:"smooth",block:"start"});navItems.forEach(function(b){b.classList.remove("active")});btn.classList.add("active");}
+});});
+window.addEventListener("scroll",function(){
+  var pos=window.scrollY+90,current=null;
+  document.querySelectorAll(".menu-section").forEach(function(s){
+    if(s.offsetTop<=pos)current=s;
+  });
+  navItems.forEach(function(b){b.classList.toggle("active",b.dataset.target===(current?current.id:""));});
+});
+</script>
+</body>
+</html>
